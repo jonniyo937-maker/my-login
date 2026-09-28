@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Login Demo</title>
+  <style>
+    body {
+      font-family: Arial;
+      background: #f2f2f2;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .box {
+      background: white;
+      padding: 25px;
+      width: 300px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px #aaa;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      box-sizing: border-box;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+    }
+
+    #message {
+      margin-top: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="box">
+  <h2>My Website</h2>
+
+  <input id="email" type="email" placeholder="Email">
+  <input id="password" type="password" placeholder="Password">
+
+  <button onclick="register()">Register</button>
+  <button onclick="login()">Login</button>
+
+  <p id="message"></p>
+</div>
+
+<script>
+function register() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (!email || !password) {
+    document.getElementById("message").innerText =
+      "Please enter email and password";
+    return;
+  }
+
+  localStorage.setItem("demoEmail", email);
+  localStorage.setItem("demoPassword", password);
+
+  document.getElementById("message").innerText =
+    "Registration successful!";
+}
+
+function login() {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  if (
+    email === localStorage.getItem("demoEmail") &&
+    password === localStorage.getItem("demoPassword")
+  ) {
+    document.getElementById("message").innerText =
+      "Login successful! Welcome 😊";
+  } else {
+    document.getElementById("message").innerText =
+      "Wrong email or password";
+  }
+}
+</script>
+
+</body>
+</html>
